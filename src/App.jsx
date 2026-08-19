@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
@@ -9,7 +9,6 @@ import ProtectedRoute from './components/common/ProtectedRoute';
 // Pages
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import ChangePasswordPage from './pages/ChangePasswordPage';
 import StudentDashboard from './pages/student/StudentDashboard';
 import ElectiveSelectionPage from './pages/student/ElectiveSelectionPage';
 import MyAllotmentPage from './pages/student/MyAllotmentPage';
@@ -30,16 +29,6 @@ export default function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/help" element={<HelpContactPage />} />
-
-              {/* Student Password Change Enforcement */}
-              <Route
-                path="/change-password"
-                element={
-                  <ProtectedRoute requiredRole="student">
-                    <ChangePasswordPage />
-                  </ProtectedRoute>
-                }
-              />
 
               {/* Student Protected Routes */}
               <Route
